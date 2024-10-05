@@ -6,33 +6,76 @@
     <title>แผนที่แหล่งท่องเที่ยวศรีสะเกษ</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBg7z-RobEGgafTYb1QvqZX4nrjZiyOI4k&callback=initMap" async defer></script>
     <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        #search-container {
-            margin-bottom: 20px;
-        }
-        #location-details {
-            margin-top: 20px;
-        }
-    </style>
+      #map {
+          height: 600px;
+          width: 100%;
+      }
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+      }
+      #search-container {
+          margin-bottom: 20px;
+      }
+      #location-details {
+          margin-top: 20px;
+      }
+          cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+          #search-container {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 20px;
+              width: 100%;
+              max-width: 800px; /* ขนาดสูงสุดที่เหมาะสม */
+              margin: 0 auto; /* จัดให้อยู่กลางหน้าจอ */
+          }
+          
+          #search-input {
+              flex: 1; /* ให้ input ขยายเต็มที่ตามขนาดที่เหลือ */
+              padding: 10px;
+              font-size: 1.2rem;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              margin-right: 10px; /* ระยะห่างระหว่าง input กับปุ่มค้นหา */
+          }
+          
+          #search-button {
+              padding: 10px 20px; /* ระยะห่างภายในปุ่ม */
+              font-size: 1.2rem; /* ขนาดฟอนต์ */
+              background-color: #4CAF50; /* สีพื้นหลัง */
+              color: white; /* สีข้อความ */
+              border: none; /* ไม่มีเส้นขอบ */
+              border-radius: 5px; /* มุมโค้ง */
+              cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์ */
+              transition: background-color 0.3s, transform 0.2s; /* เพิ่มการเปลี่ยนแปลงของสีและขนาด */
+          }
+          
+          /* เปลี่ยนสีเมื่อวางเมาส์ */
+          #search-button:hover {
+              background-color: #45a049; /* สีพื้นหลังที่เปลี่ยน */
+          }
+          
+          /* เพิ่มเอฟเฟกต์เมื่อกดปุ่ม */
+          #search-button:active {
+              transform: scale(0.95); /* ลดขนาดปุ่มเมื่อกด */
+          }
+          
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>แผนที่แหล่งท่องเที่ยวศรีสะเกษ</h1>
-        <div id="search-container">
-            <input type="text" id="search-input" placeholder="ค้นหาสถานที่ท่องเที่ยว">
-            <button onclick="searchLocation()">ค้นหา</button>
-        </div>
-        <div id="map"></div>
-        <div id="location-details"></div>
-    </div>
+
+  <h2>ค้นหาสถานที่ท่องเที่ยว</h2>
+  <div id="search-container">
+      <input type="text" id="search-input" placeholder="ค้นหาสถานที่ท่องเที่ยว..." oninput="autocomplete(this)">
+      <button id="search-button" onclick="searchLocation()">ค้นหา</button>
+      <div id="autocomplete-list" class="autocomplete-items"></div>
+  </div>
+
+  <div id="map"></div>
+  <div id="location-details"></div>
 
     <script>
         let map;
