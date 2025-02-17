@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .product-container {
+            max-width: 500px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-container">
+        <h1>{{ product.name }}</h1>
+        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+        <p>ราคา: {{ product.price }} บาท</p>
+        <p>{{ product.description }}</p>
+        <a href="{% url 'products' %}" class="btn">กลับไปเลือกสินค้า</a>
+        <a href="{% url 'add_to_cart' product.id %}" class="btn">เพิ่มลงตะกร้า</a>
+    </div>
+</body>
+</html>

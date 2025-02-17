@@ -11,7 +11,18 @@ def base(request):
     return render(request, 'base.html')
 
 
-def Travel_data(request):
-    with open('path/to/Travel_data.json') as f:
-        data = json.load(f)
-    return JsonResponse(data)
+
+
+def products(request):
+    return render(request, "products.html")
+
+def cart_view(request):
+    cart = request.session.get("cart", [])  # ดึงข้อมูลจาก session
+    return render(request, "cart.html", {"cart": cart})
+
+def contact_view(request):
+    return render(request, "contact.html")
+from django.shortcuts import render
+
+def add_to_cart(request, product_id):
+    return render(request, "cart.html")  # ตรวจสอบว่ามี cart.html หรือไม่

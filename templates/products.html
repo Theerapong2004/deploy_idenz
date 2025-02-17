@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ร้านขายผลไม้</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: #ff9800;
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .product {
+            background-color: white;
+            display: inline-block;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 200px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #ff9800;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            margin-top: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #e68900;
+        }
+        .cart-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .cart-link:hover {
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🍏 ร้านขายผลไม้ 🍊</h1>
+
+    <div class="container">
+        <div class="product">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="แอปเปิ้ล">
+            <h3>แอปเปิ้ล</h3>
+            <p>💰 ราคา: 30 บาท</p>
+            <a href="{% url 'add_to_cart' 1 %}" class="btn">🛒 เพิ่มลงตะกร้า</a>
+        </div>
+
+        <div class="product">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Ambersweet_oranges.jpg" alt="ส้ม">
+            <h3>ส้ม</h3>
+            <p>💰 ราคา: 25 บาท</p>
+            <a href="{% url 'add_to_cart' 2 %}" class="btn">🛒 เพิ่มลงตะกร้า</a>
+        </div>
+
+        <div class="product">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg" alt="กล้วย">
+            <h3>กล้วย</h3>
+            <p>💰 ราคา: 15 บาท</p>
+            <a href="{% url 'add_to_cart' 3 %}" class="btn">🛒 เพิ่มลงตะกร้า</a>
+        </div>
+    </div>
+
+    <!-- ✅ ลิงก์ไปดูตะกร้า -->
+    <a href="{% url 'cart' %}" class="cart-link">🛍️ ดูตะกร้าสินค้า</a>
+
+</body>
+</html>

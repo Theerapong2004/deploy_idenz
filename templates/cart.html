@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ตะกร้าสินค้า</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .cart-item { border: 1px solid #ddd; padding: 15px; margin: 10px; display: inline-block; }
+        .btn { background-color: #f44336; color: white; padding: 8px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>ตะกร้าสินค้า</h1>
+    {% if cart %}
+        {% for item in cart %}
+            <div class="cart-item">
+                <h3>{{ item.name }}</h3>
+                <p>ราคา: {{ item.price }} บาท</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>ไม่มีสินค้าในตะกร้า</p>
+    {% endif %}
+    <br>
+    <a href="{% url 'products' %}" class="btn">กลับไปเลือกสินค้า</a>
+</body>
+</html>
